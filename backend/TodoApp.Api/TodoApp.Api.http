@@ -1,0 +1,17 @@
+@baseUrl = https://localhost:7200
+
+GET {{baseUrl}}/api/todos
+Accept: application/json
+
+###
+
+POST {{baseUrl}}/api/todos
+Content-Type: application/json
+
+{
+  "title": "Buy milk"
+}
+
+###
+
+DELETE {{baseUrl}}/api/todos/1

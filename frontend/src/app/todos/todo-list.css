@@ -1,0 +1,56 @@
+:host {
+  display: block;
+}
+
+mat-card-content {
+  padding-bottom: 1rem;
+}
+
+.add-form {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.title-field {
+  flex: 1;
+  min-width: 0;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  padding: 0.75rem 1rem;
+  border-radius: var(--mat-sys-corner-medium);
+  background: var(--mat-sys-error-container);
+  color: var(--mat-sys-on-error-container);
+}
+
+.todos {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.25rem 0.5rem 0.25rem 1rem;
+  border-top: 1px solid var(--mat-sys-outline-variant);
+  font: var(--mat-sys-body-large);
+}
+
+.todo-title {
+  overflow-wrap: anywhere;
+}
+
+.status {
+  margin: 0;
+  padding: 0.5rem 1rem 1.5rem;
+  text-align: center;
+  color: var(--mat-sys-on-surface-variant);
+}

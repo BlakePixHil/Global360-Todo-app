@@ -1,0 +1,55 @@
+<mat-card appearance="outlined">
+  <mat-card-content>
+    <form class="add-form" [formGroup]="form" (ngSubmit)="add()">
+      <mat-form-field
+        class="title-field"
+        appearance="outline"
+        subscriptSizing="dynamic"
+        hideRequiredMarker
+      >
+        <mat-label>New todo</mat-label>
+        <input
+          matInput
+          formControlName="title"
+          placeholder="What needs doing?"
+          autocomplete="off"
+          [attr.maxlength]="maxTitleLength"
+          [readonly]="saving()"
+        />
+      </mat-form-field>
+      <button matButton="filled" type="submit" [disabled]="form.invalid || saving()">
+        <mat-icon>add</mat-icon>
+        Add
+      </button>
+    </form>
+
+    @if (error(); as message) {
+      <p class="error" role="alert">
+        <mat-icon>error</mat-icon>
+        {{ message }}
+      </p>
+    }
+  </mat-card-content>
+
+  @if (loading()) {
+    <mat-progress-bar mode="indeterminate" aria-label="Loading todos" />
+  } @else if (todos().length) {
+    <ul class="todos">
+      @for (todo of todos(); track todo.id) {
+        <li class="todo">
+          <span class="todo-title">{{ todo.title }}</span>
+          <button
+            matIconButton
+            type="button"
+            [attr.aria-label]="'Delete ' + todo.title"
+            (click)="remove(todo)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </li>
+      }
+    </ul>
+  } @else if (!error()) {
+    <p class="status">Nothing to do yet. Add your first todo above.</p>
+  }
+</mat-card>
